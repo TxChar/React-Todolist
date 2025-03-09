@@ -14,19 +14,19 @@ export default function TaskStatusButton({ taskId, status }: TaskStatusButtonPro
     mutationFn: ({ taskId, status }: { taskId: string; status: string }) =>
       updateTaskStatus(taskId, status),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["tasks"] }); // ✅ รีโหลด Task List
+      queryClient.invalidateQueries({ queryKey: ["tasks"] }); //รีโหลด Task List
     },
   });
 
-  return (
+    return (
     <button
-      onClick={() => {
-        const newStatus = status === "Done" ? "Pending" : "Done"; // ✅ Toggle status
+        onClick={() => {
+        const newStatus = status === "Done" ? "Pending" : "Done"; //Toggle status
         updateStatusMutation.mutate({ taskId, status: newStatus });
-      }}
-      className="px-3 py-1 bg-blue-500 text-white rounded"
+        }}
+        className="px-3 py-1 bg-blue-500 text-white rounded"
     >
-      {status === "Done" ? "Undo" : "Done"}
+        {status === "Done" ? "Undo" : "Done"}
     </button>
-  );
+    );
 }

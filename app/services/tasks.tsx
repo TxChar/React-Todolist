@@ -26,7 +26,9 @@ export const updateTaskStatus = async (taskId: string, status: string) => {
 };
 
 // // ลบ Task
-// export const deleteTask = async (taskId: string) => {
-//   const response = await axios.delete(`${API_URL}/tasks/delete/${taskId}`);
-//   return response.data;
-// };
+export const deleteTask = async (taskId: string) => {
+  console.log("Deleting Task ID:", taskId); //Debug ดูว่าค่า taskId ถูกต้องไหม
+  const response = await axios.delete(`${API_URL}/tasks/delete/${taskId}`);
+  return response.data;
+};
+

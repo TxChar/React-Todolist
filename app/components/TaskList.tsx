@@ -2,7 +2,7 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { getTasks, updateTaskStatus } from "../services/tasks";
 import TaskStatusButton from "./TaskStatusButton";
-
+import TaskDeleteButton from "./TaskDeleteButton";
 
 export default function TaskList() {
     const { data: tasks, isLoading } = useQuery({ queryKey: ["tasks"], queryFn: getTasks });
@@ -24,7 +24,10 @@ export default function TaskList() {
                 </div>
             </div>
 
+            <div className="flex gap-2">
                 <TaskStatusButton taskId={task.id} status={task.status} />
+                <TaskDeleteButton taskId={task.id} /> {/*ปุ่ม Delete */}
+            </div>
             </li>
         ))}
         </ul>
