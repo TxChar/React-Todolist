@@ -16,11 +16,14 @@ export const createTask = async (task: { name: string }) => {
   return response.data;
 };
 
-// // อัปเดตสถานะ Task
-// export const updateTaskStatus = async (taskId: string) => {
-//   const response = await axios.patch(`${API_URL}/tasks/status/${taskId}`);
-//   return response.data;
-// };
+// อัปเดตสถานะ Task
+export const updateTaskStatus = async (taskId: string, status: string) => {
+  console.log("Updating Task ID:", taskId, "New Status:", status); //Debug
+  const response = await axios.patch(`${API_URL}/tasks/status/${taskId}`, {
+    status, //ส่งค่า status ไปด้วย
+  });
+  return response.data;
+};
 
 // // ลบ Task
 // export const deleteTask = async (taskId: string) => {
